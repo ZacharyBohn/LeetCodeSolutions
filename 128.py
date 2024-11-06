@@ -14,7 +14,7 @@ class Solution1:
 		return longest_seq
 
 
-class Solution:
+class Solution2:
     def longestConsecutive(self, nums: List[int]) -> int:
         hashset = {}
         longest = 0
