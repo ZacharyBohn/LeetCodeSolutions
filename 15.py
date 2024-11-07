@@ -35,46 +35,8 @@ class Solution1:
                 answers.append([x, y, z])
         return answers
 
-# second solution using more clever maths
-class Solution2:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
-        
-        answers = []
-        duplicates = set()
-
-        # count how many of each element there are
-        counts = {}
-        for n in nums:
-            value = counts.get(n, 0)
-            counts[n] = value + 1
-
-        # O(n^2) time and O(1) space
-        for x in counts:
-            for y in counts:
-                # not enough elements
-                if x == y and counts[x] == 1:
-                    continue
-                z = -(x+y)
-                z_count = counts.get(z, None)
-                # z doesn't exist, so x,y pair can't be an answer
-                if not z_count:
-                    continue
-                # not enough elements
-                if z_count == 1 and (z == x or z == y):
-                    continue
-                # not enough elements
-                if z_count == 2 and (z == x and z == y):
-                    continue
-                dupe = (min(x,y,z), max(x,y,z))
-                # this answer has already been recorded
-                if dupe in duplicates:
-                    continue
-                answers.append([x, y, z])
-                duplicates.add(dupe)
-        return answers
-
-
- class Solution3:
+# better solution
+ class Solution2:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         solutions = set()
         counts = {}
